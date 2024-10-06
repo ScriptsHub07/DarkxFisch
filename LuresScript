@@ -9,7 +9,7 @@ local Player = game.Players.LocalPlayer
 })
 
 function MakeScriptHub()
-         loadstring(game:HttpGet("https://raw.githubusercontent.com/pedrinn007x5/KeySystemL/refs/heads/main/Lures?token=GHSAT0AAAAAACYRIQ4DFAXYSWIDYTGT4BYIZYC6U6Q"))()
+         loadstring(game:HttpGet("https://raw.githubusercontent.com/pedrinn007x5/Lures/refs/heads/main/Script"))()
 end
 
 OrionLib:MakeNotification({
