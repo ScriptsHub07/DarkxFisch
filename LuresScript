@@ -1,15 +1,15 @@
-local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/ionlyusegithubformcmods/1-Line-Scripts/main/Mobile%20Friendly%20Orion')))() --This Will Load The Script Code
-local Player = game.Players.LocalPlayer --This Will Reveal The Player Name
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/ionlyusegithubformcmods/1-Line-Scripts/main/Mobile%20Friendly%20Orion')))()
+local Player = game.Players.LocalPlayer 
   local Window = OrionLib:MakeWindow({
-		Name = "EXAMPLE HOW TO MAKE A KEY SYSTEM FOR MOBILE",
+		Name = "Lures Script / Key System",
 		HidePremium = false,
 		SaveConfig = true,
 		ConfigFolder = "OrionTest",
-        IntroText = "Loading Script..."       
-}) --This Will Load The Script Hub
+        IntroText = "Lures Script..."       
+})
 
 function MakeScriptHub()
-         loadstring(game:HttpGet('https://raw.githubusercontent.com/GhostPlayer352/Test4/main/GhostHub'))() --Put The Script That Will Load If The Key Is Correct Here
+         loadstring(game:HttpGet("https://raw.githubusercontent.com/pedrinn007x5/KeySystemL/refs/heads/main/Lures?token=GHSAT0AAAAAACYRIQ4DFAXYSWIDYTGT4BYIZYC6U6Q"))()
 end
 
 OrionLib:MakeNotification({
@@ -19,7 +19,7 @@ OrionLib:MakeNotification({
 	Time = 5
 }) --Notification
 
-getgenv().Key = "grw076eiwy7" --Put The Correct Key Here
+getgenv().Key = "Lures" --Put The Correct Key Here
 getgenv().KeyInput = "string" --Require For The Key To Work
 
 local Tab = Window:MakeTab({
@@ -79,7 +79,7 @@ Tab:AddButton({
 Tab:AddButton({
 	Name = "Copy Key",
 	Callback = function()
-      		setclipboard("Put The Link Here") --This Will Copy The Link Of The Key
+      		setclipboard("lures gostoso") --This Will Copy The Link Of The Key
   	end    
 }) 
     
