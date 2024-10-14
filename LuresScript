@@ -1,86 +1,36 @@
-local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/ionlyusegithubformcmods/1-Line-Scripts/main/Mobile%20Friendly%20Orion')))()
-local Player = game.Players.LocalPlayer 
-  local Window = OrionLib:MakeWindow({
-		Name = "Lures Script / Key System",
-		HidePremium = false,
-		SaveConfig = true,
-		ConfigFolder = "OrionTest",
-        IntroText = "Lures Script..."       
-})
+local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local window = lib.CreateLib("Key System | Lures Script", "DarkTheme")
 
-function MakeScriptHub()
-         loadstring(game:HttpGet("https://raw.githubusercontent.com/pedrinn007x5/Lures/refs/heads/main/Script"))()
-end
+local Main = window:NewTab("Check Key")
+local Section = Main:NewSection("Key System")
 
-OrionLib:MakeNotification({
-	Name = "Logged In!",
-	Content = "You need key "..Player.Name..".",
-	Image = "rbxassetid://4483345998",
-	Time = 5
-}) --Notification
+_G.Key = "nothing yet"
 
-getgenv().Key = "Lures" --Put The Correct Key Here
-getgenv().KeyInput = "string" --Require For The Key To Work
+Section:NewButton("Copy Key Link", "Paste link in browser", function()
+    setclipboard("https://workink.net/1WIV/m28wz7xd") -- Add your key link
+end)
 
-local Tab = Window:MakeTab({
-	Name = "Key",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
-}) --Making A Tab
+local KeyLabel = Section:NewLabel("Key 1 | ".. _G.Key)
+local KeyInput = Section:NewTextBox("Key", "Key",
+    function(txt)
+        KeyLabel:UpdateLabel("Key > " .. txt)
+        _G.Key = txt
+        CheckKey()
+    end)
 
-Tab:AddTextbox({
-	Name = "Key",
-	Default = "Enter Key.",
-	TextDisappear = true,
-	Callback = function(Value)
-		getgenv().KeyInput = Value
-	end	  
-}) --You Will Enter The Key Here
-
-Tab:AddButton({
-    Name = "Check Key",
-    Callback = function()
-        if getgenv().KeyInput == getgenv().Key then
-            OrionLib:MakeNotification({
-                Name = "Checking Key",
-                Content = "Checking The Key You Entered",
-                Image = "rbxassetid://4483345998",
-                Time = 5
-            })
-            wait(2)
-            OrionLib:MakeNotification({
-                Name = "Correct Key!",
-                Content = "The key you entered is Correct.",
-                Image = "rbxassetid://4483345998",
-                Time = 5
-            })
-            wait(1)
-            OrionLib:Destroy()
-            wait(.3)
-            MakeScriptHub()
-        else
-           OrionLib:MakeNotification({
-                Name = "Checking Key",
-                Content = "Checking The Key You Entered",
-                Image = "rbxassetid://4483345998",
-                Time = 5
-            })
-            wait(2)
-            OrionLib:MakeNotification({
-                Name = "Incorrect Key!",
-                Content = "The key you entered is incorrect.",
-                Image = "rbxassetid://4483345998",
-                Time = 5
-            })
-        end
+_G.CheckKey = false
+local OutputLabel = Section:NewLabel("")
+function CheckKey()
+    if _G.CheckedKey == true then
+        return
     end
-}) --This Will Check The Key You Entered
+    local key = game:HttpGet("https://redirect-api.work.ink/tokenValid/" .. _G.Key .. "?linkId=64581")
+    if key == 'False' then
+        OutputLabel:UpdateLabel("Key incorrect")
+        return
+    end
 
-Tab:AddButton({
-	Name = "Copy Key",
-	Callback = function()
-      		setclipboard("lures gostoso") --This Will Copy The Link Of The Key
-  	end    
-}) 
-    
-OrionLib:Init() --Require If The Script Is Done
+    _G.CheckedKey = true
+        local script = loadstring(game:HttpGet(('https://raw.githubusercontent.com/pedrinn007x5/Lures/refs/heads/main/Script')))()
+        
+    end
