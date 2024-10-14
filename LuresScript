@@ -19,7 +19,7 @@ local KeyInput = Section:NewTextBox("Key", "Key",
     end)
 
 _G.CheckKey = false
-local OutputLabel = Section:NewLabel("check")
+local OutputLabel = Section:NewLabel("")
 function CheckKey()
     if _G.CheckedKey == true then
         return
