@@ -19,7 +19,7 @@ local KeyInput = Section:NewTextBox("Key", "Key",
     end)
 
 _G.CheckKey = false
-local OutputLabel = Section:NewLabel("")
+local OutputLabel = Section:NewLabel("chack")
 function CheckKey()
     if _G.CheckedKey == true then
         return
@@ -30,7 +30,7 @@ function CheckKey()
         return
     end
 
-    _G.CheckedKey = true
+    Section:NewButton("Check Key", "", function()
+        _G.CheckedKey = true
         local script = loadstring(game:HttpGet(('https://raw.githubusercontent.com/pedrinn007x5/Lures/refs/heads/main/Script')))()
-        
-    end
+    end)
