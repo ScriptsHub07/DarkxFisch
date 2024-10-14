@@ -31,21 +31,5 @@ function CheckKey()
     end
 
     _G.CheckedKey = true
-    if game.PlaceId == 2753915549 then
-        World1 = true
-elseif game.PlaceId == 4442272183 then
-    World2 = true
-elseif game.PlaceId == 7449423635 then
-    World3 = true
-else 
-    local script = loadstring(game:HttpGet(('https://raw.githubusercontent.com/pedrinn007x5/Lures/refs/heads/main/Script')))()
-end
-        if script then
-            script()
-        else
-            OutputLabel:UpdateLabel("Failed to load")
-        end
-    else 
-    OutputLabel:UpdateLabel("Unsupported Game")
-    end
+        local script = loadstring(game:HttpGet(('https://raw.githubusercontent.com/pedrinn007x5/Lures/refs/heads/main/Script')))()
 end
