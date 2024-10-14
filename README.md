@@ -2509,7 +2509,7 @@ CamShake:Stop()
         return "Remaining " .. 10 - v228 .. " training sessions."
     end
 
-local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local OrionLib = loadstring(game:HttpGet(('https://pastebin.com/raw/WRUyYTdY')))()
 local Window = OrionLib:MakeWindow({Name = "Lures Script", HidePremium = false, IntroText = "", SaveConfig = true, ConfigFolder = "Lures Script"})
 
 OrionLib:MakeNotification({
