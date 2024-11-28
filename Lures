@@ -52,7 +52,7 @@ local Window = Fluent:CreateWindow({
     TabWidth = 120,
     Size = UDim2.fromOffset(480, 320),
     Acrylic = false,
-    Theme = "Darker",
+    Theme = "Amethyst",
     MinimizeKey = Enum.KeyCode.LeftControl
 })
 
@@ -1195,7 +1195,7 @@ if deviceType == "Mobile" then
     B.Size = UDim2.new(0, 50, 0, 50)
     B.Position = UDim2.new(0, 10, 1, -60) -- Consider making this responsive
     B.BackgroundColor3 = Color3.fromRGB(128, 0, 128)
-    B.Text = "S"
+    B.Text = "Dark"
     B.TextColor3 = Color3.fromRGB(0, 0, 0)
     B.TextScaled = true
     B.Transparency = 0.5
