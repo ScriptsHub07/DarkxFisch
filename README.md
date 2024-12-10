@@ -38,8 +38,7 @@ end);
 local Tabs = {
     Main = Window:AddTab('Main'),
     Teleports = Window:AddTab('Teleports'),
-    LocalPlayer = Window:AddTab('LocalPlayer'),
-    Settings = Window:AddTab('Settings')
+    LocalPlayer = Window:AddTab('LocalPlayer')
 }
 
 -- Tables
@@ -328,7 +327,7 @@ local AutoShakeSettings = AutoShakeGroup:AddDependencyBox()
 AutoShakeSettings:AddDropdown('AutoShakeMode', {
     Text = 'Auto Shake Method',
     Tooltip = '',
-    Values = {'ClickEvent', 'firesignal', 'KeyCodeEvent' },
+    Values = {'ClickEvent', 'KeyCodeEvent' },
     Default = autoShakeMethod,
   
     Callback = function(Value)
@@ -481,7 +480,7 @@ local SellButton = FishUtilitiesGroup:AddButton({
         Workspace:WaitForChild("world"):WaitForChild("npcs"):WaitForChild("Marc Merchant"):WaitForChild("merchant"):WaitForChild("sell"):InvokeServer()
     end,
     DoubleClick = false,
-    Tooltip = 'Vende o pix que esta seegurano'
+    Tooltip = 'Vende o peixe que esta segurando'
 })
 
 local SellAllButton = FishUtilitiesGroup:AddButton({
