@@ -7,7 +7,7 @@ local ThemeManager = loadstring(game:HttpGet(repo ..'Gui%20Lib%20%5BThemeManager
 local SaveManager = loadstring(game:HttpGet(repo ..'Gui%20Lib%20%5BSaveManager%5D'))()
 
 local Window = Library:CreateWindow({
-    Title = 'Fisch V1.2.3 (BETA)',
+    Title = 'Fisch V1',
     Center = true,
     AutoShow = true,
     TabPadding = 8,
@@ -27,7 +27,7 @@ local WatermarkConnection = game:GetService('RunService').RenderStepped:Connect(
         FrameCounter = 0;
     end;
 
-    Library:SetWatermark(('Rinns Hub V1.2.3 | %s fps | %s ms'):format(
+    Library:SetWatermark(('Dark X Fisch v1 | %s fps | %s ms'):format(
         math.floor(FPS),
         math.floor(game:GetService('Stats').Network.ServerStatsItem['Data Ping']:GetValue())
     ));
@@ -125,8 +125,8 @@ autoreelandshakeConnection = PlayerGUI.ChildAdded:Connect(function(GUI)
                                 local size = child.AbsoluteSize
                                 VirtualInputManager:SendMouseButtonEvent(pos.X + size.X / 2, pos.Y + size.Y / 2, 0, true, LocalPlayer, 0)
                                 VirtualInputManager:SendMouseButtonEvent(pos.X + size.X / 2, pos.Y + size.Y / 2, 0, false, LocalPlayer, 0)
-                            --[[elseif autoShakeMethod == "firesignal" then
-                                firesignal(child.MouseButton1Click)]]
+                                elseif autoShakeMethod == "firesignal" then
+                                firesignal(child.MouseButton1Click)
                             elseif autoShakeMethod == "KeyCodeEvent" then
                                 while WaitForSomeone(RenderStepped) do
                                     if autoShake and GUI.safezone:FindFirstChild(child.Name) ~= nil then
@@ -310,14 +310,14 @@ local AutoShakeGroup = Tabs.Main:AddLeftGroupbox('AutoShake')
 local AutoReelGroup = Tabs.Main:AddLeftGroupbox('AutoReel')
 local AutoCastGroup = Tabs.Main:AddLeftGroupbox('AutoCast')
 local FishUtilitiesGroup = Tabs.Main:AddRightGroupbox('Fish (🐟) Utilities')
---local EventGroup = Tabs.Main:AddRightGroupbox('Event')
+local EventGroup = Tabs.Main:AddRightGroupbox('Event')
 local ZoneCastGroup = Tabs.Main:AddRightGroupbox('ZoneCast')
 local CollarPlayerGroup = Tabs.Main:AddRightGroupbox('CollarPlayer')
 
 AutoShakeGroup:AddToggle('AutoShake', {
     Text = 'Enabled',
     Default = false,
-    Tooltip = 'Automatically clicks the shake button for you',
+    Tooltip = 'Clica automatico nos botoes',
     Callback = function(Value)
         autoShake = Value
     end
@@ -327,8 +327,8 @@ local AutoShakeSettings = AutoShakeGroup:AddDependencyBox()
 
 AutoShakeSettings:AddDropdown('AutoShakeMode', {
     Text = 'Auto Shake Method',
-    Tooltip = 'Method to click on the shake button',
-    Values = {'ClickEvent', --[['firesignal',]] 'KeyCodeEvent' },
+    Tooltip = '',
+    Values = {'ClickEvent', 'firesignal', 'KeyCodeEvent' },
     Default = autoShakeMethod,
   
     Callback = function(Value)
@@ -338,8 +338,7 @@ AutoShakeSettings:AddDropdown('AutoShakeMode', {
 
 local AutoShakeKeyCodeEventText = AutoShakeSettings:AddDependencyBox()
 
-AutoShakeKeyCodeEventText:AddLabel('Inspired from rblxscripts.net!')
-AutoShakeKeyCodeEventText:AddLabel('Huge shoutout to them.')
+AutoShakeKeyCodeEventText:AddLabel('Dark X | Fisch')
 
 AutoShakeKeyCodeEventText:SetupDependencies({
     { Options.AutoShakeMode, "KeyCodeEvent" }
@@ -361,7 +360,6 @@ AutoShakeSettings:SetupDependencies({
     { Toggles.AutoShake, true }
 })
 
---[[
 local AutoShakeXYOffset = AutoShakeGroup:AddDependencyBox()
 
 AutoShakeXYOffset:AddSlider('AutoShakeXOffset', {
@@ -391,12 +389,11 @@ AutoShakeXYOffset:AddSlider('AutoShakeXOffset', {
 AutoShakeXYOffset:SetupDependencies({
     { Options.AutoShakeMode, "ClickEvent" }
 })
-]]
 
 AutoReelGroup:AddToggle('AutoReel', {
     Text = 'Enabled',
     Default = false,
-    Tooltip = 'Automatically reels in the fishing rod',
+    Tooltip = 'Enrola automaticamente a vara de pescar',
     Callback = function(Value)
         autoReel = Value
     end
@@ -405,7 +402,7 @@ AutoReelGroup:AddToggle('AutoReel', {
 local AutoReelSettings = AutoReelGroup:AddDependencyBox()
 
 AutoReelSettings:AddSlider('AutoReelDelay', {
-    Text = 'AutoReel Delay',
+    Text = 'Delay da fisgada',
     Default = 2,
     Min = 0,
     Max = 10,
@@ -423,7 +420,7 @@ AutoReelSettings:SetupDependencies({
 AutoCastGroup:AddToggle('AutoCast', {
     Text = 'Enabled',
     Default = false,
-    Tooltip = 'Automatically throws the rod',
+    Tooltip = '',
     Callback = function(Value)
         autoCast = Value
         local Tool = LocalCharacter:FindFirstChildOfClass("Tool")
@@ -452,7 +449,7 @@ AutoCastGroup:AddToggle('AutoCast', {
 local AutoCastSettings = AutoCastGroup:AddDependencyBox()
 
 AutoCastSettings:AddSlider('AutoCastDelay', {
-    Text = 'AutoCast Delay',
+    Text = 'pesca Delay',
     Default = 2,
     Min = 0,
     Max = 10,
@@ -465,7 +462,7 @@ AutoCastSettings:AddSlider('AutoCastDelay', {
 
 AutoCastSettings:AddDropdown('AutoCastMode', {
     Text = 'Auto Cast Mode',
-    Tooltip = 'Change the mode of the AutoCast',
+    Tooltip = 'Alterar o modo do Auto Pesca',
     Values = {'Legit', 'Rage'},
     Default = autoCastMode,
   
@@ -484,7 +481,7 @@ local SellButton = FishUtilitiesGroup:AddButton({
         Workspace:WaitForChild("world"):WaitForChild("npcs"):WaitForChild("Marc Merchant"):WaitForChild("merchant"):WaitForChild("sell"):InvokeServer()
     end,
     DoubleClick = false,
-    Tooltip = 'Sells the fish you are holding'
+    Tooltip = 'Vende o pix que esta seegurano'
 })
 
 local SellAllButton = FishUtilitiesGroup:AddButton({
@@ -493,7 +490,7 @@ local SellAllButton = FishUtilitiesGroup:AddButton({
         Workspace:WaitForChild("world"):WaitForChild("npcs"):WaitForChild("Marc Merchant"):WaitForChild("merchant"):WaitForChild("sellall"):InvokeServer()
     end,
     DoubleClick = false,
-    Tooltip = 'Sells all your fish'
+    Tooltip = 'Vende toos os pixs'
 })
 
 local SellAllButton = FishUtilitiesGroup:AddButton({
@@ -502,13 +499,12 @@ local SellAllButton = FishUtilitiesGroup:AddButton({
         Workspace:WaitForChild("world"):WaitForChild("npcs"):WaitForChild("Appraiser"):WaitForChild("appraiser"):WaitForChild("appraise"):InvokeServer()
     end,
     DoubleClick = false,
-    Tooltip = 'Appraises the fish you are holding'
+    Tooltip = 'Avalia o peixe que você está segurando'
 })
 
---[[
 EventGroup:AddDropdown('Event', {
     Text = 'Item Grabber',
-    Tooltip = 'Grabs the Event Item',
+    Tooltip = 'Pegar itens de eventos',
     Values = {'Gaint Mushroom', 'Spiders Eye', 'Strange Root', 'Candy Corn', 'Dark Art Skull'},
     Default = '',
   
@@ -540,7 +536,6 @@ EventGroup:AddDropdown('Event', {
 })
 
 EventGroup:AddLabel("Might be buggy!")
-]]
 
 ZoneCastGroup:AddToggle('ZoneCast', {
     Text = 'Enabled',
@@ -571,7 +566,7 @@ ZoneCastDropdowns:SetupDependencies({
 CollarPlayerGroup:AddToggle('CollarPlayer', {
     Text = 'Enabled',
     Default = false,
-    Tooltip = "Collar's the player making them look like your pet :3",
+    Tooltip = "",
     Callback = function(Value)
         CollarPlayer = Value
     end
@@ -582,7 +577,7 @@ local CollarPlayerDropdown = CollarPlayerGroup:AddDependencyBox()
 CollarPlayerDropdown:AddDropdown('CollarTarget', {
     SpecialType = 'Player',
     Text = 'Player',
-    Tooltip = 'Select the player you will collar',
+    Tooltip = 'Selecionar player',
   
     Callback = function(Value)
         Target = Value
@@ -644,7 +639,7 @@ local TeleportToSafeZoneButton = TeleportToSafeZoneGroup:AddButton({
         HumanoidRootPart.CFrame = SafeZone.CFrame + Vector3.new(0, 2, 0)
     end,
     DoubleClick = false,
-    Tooltip = 'Teleports you to a safe zone'
+    Tooltip = 'Teleportar para safe zone'
 })
 
 -- LocalPlayer
@@ -654,7 +649,7 @@ local LocalPlayerGroup = Tabs.LocalPlayer:AddLeftGroupbox('LocalPlayer')
 LocalPlayerGroup:AddToggle('Noclip', {
     Text = 'Noclip',
     Default = false,
-    Tooltip = 'Allows you to go through walls',
+    Tooltip = 'Atravessar paredes',
     Callback = function(Value)
         Noclip = Value
     end
@@ -663,7 +658,7 @@ LocalPlayerGroup:AddToggle('Noclip', {
 LocalPlayerGroup:AddToggle('AntiDrown', {
     Text = 'Disable Oxygen',
     Default = false,
-    Tooltip = 'Allows you to stay in water infinitely',
+    Tooltip = 'Desabilitar Oxigenio',
     Callback = function(Value)
         AntiDrown = Value
         if Value == true then
@@ -695,7 +690,7 @@ local ResetRodButton = ResetRodGroup:AddButton({
         end
     end,
     DoubleClick = false,
-    Tooltip = 'Resets your rod'
+    Tooltip = 'Resetar rod'
 })
 
 local AntiAfkGroup = Tabs.LocalPlayer:AddRightGroupbox('AntiAFK')
@@ -703,14 +698,14 @@ local AntiAfkGroup = Tabs.LocalPlayer:AddRightGroupbox('AntiAFK')
 local AntiAFKButton = AntiAfkGroup:AddButton({
     Text = 'Anti-AFK',
     Func = function()
-        Library:Notify("Anti-AFK is now running!")
+        Library:Notify("Anti-AFK ligado")
         LocalPlayer.Idled:Connect(function()
             VirtualUser:CaptureController()
             VirtualUser:ClickButton2(Vector2.new())
         end)
     end,
     DoubleClick = false,
-    Tooltip = 'Disables idle kick'
+    Tooltip = 'Deesabilitar kick inativo'
 })
 
 local FreezeCharacterGroup = Tabs.LocalPlayer:AddLeftGroupbox('Freeze Character')
@@ -718,7 +713,7 @@ local FreezeCharacterGroup = Tabs.LocalPlayer:AddLeftGroupbox('Freeze Character'
 FreezeCharacterGroup:AddToggle('FreezeCharacter', {
     Text = 'Enabled',
     Default = false,
-    Tooltip = "Freezes your character in current location",
+    Tooltip = "Congele o personagem em sua posição atual",
     Callback = function(Value)
         local oldpos = HumanoidRootPart.CFrame
         FreezeChar = Value
@@ -735,32 +730,6 @@ FreezeCharacterGroup:AddToggle('FreezeCharacter', {
 })
 
 -- Settings
-
-local SettingsGroup = Tabs.Settings:AddLeftGroupbox('Settings')
-local CreditsGroup = Tabs.Settings:AddRightGroupbox('Credits')
-
-CreditsGroup:AddLabel('Made by kylosilly and netpa!')
-CreditsGroup:AddLabel('Made with love and hate :3')
-
-local DiscordButton = CreditsGroup:AddButton({
-    Text = 'Copy Fisch Discord Link',
-    Func = function()
-        setclipboard('https://discord.gg/DEkfE99JFh')
-    end,
-    DoubleClick = false,
-    Tooltip = 'Join our fisch discord!'
-})
-
-local DiscordButton2 = CreditsGroup:AddButton({
-    Text = 'Copy Main Discord link',
-    Func = function()
-        setclipboard('https://discord.gg/VudXCDCaBN')
-    end,
-    DoubleClick = false,
-    Tooltip = 'Join our main discord!'
-})
-
-CreditsGroup:AddLabel('البرود يا جماعه هو الحل')
 
 SettingsGroup:AddButton('Unload', function() Library:Unload() end)
 
@@ -829,11 +798,4 @@ task.spawn(function()
         local version = game:HttpGet("https://raw.githubusercontent.com/kylosilly/femboyware/refs/heads/main/fischver")
         return HttpService:JSONDecode(version)
     end)
-    
-    if success then
-        if Version ~= LatestVer then
-            Library:Notify("You are using an outdated version of the Fisch script.")
-            Library:Notify("Join our fisch discord server to get the new script.")
-        end
-    end
 end)
