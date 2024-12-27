@@ -4,6 +4,7 @@
 -- Instances:
 
 local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
 local Background = Instance.new("Frame")
 local UICorner = Instance.new("UICorner")
 local NameHub = Instance.new("TextLabel")
@@ -23,21 +24,31 @@ local TeSt = Instance.new("TextButton")
 local Shop = Instance.new("TextButton")
 local Misc = Instance.new("TextButton")
 local AF = Instance.new("Frame")
+local UICorner_2 = Instance.new("UICorner")
+local UIGradient = Instance.new("UIGradient")
 
 --Properties:
 
 ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
+Frame.Parent = ScreenGui
+Frame.AnchorPoint = Vector2.new(0.5, 0.5)
+Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Frame.BorderSizePixel = 0
+Frame.Position = UDim2.new(0.5, 0, 0.5, 0)
+Frame.Size = UDim2.new(0.733944952, 0, 0.965361416, 0)
+
 Background.Name = "Background"
-Background.Parent = ScreenGui
+Background.Parent = Frame
 Background.AnchorPoint = Vector2.new(0.5, 0.5)
 Background.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 Background.BackgroundTransparency = 0.150
 Background.BorderColor3 = Color3.fromRGB(0, 0, 0)
 Background.BorderSizePixel = 0
-Background.Position = UDim2.new(0.499712497, 0, 0.497474909, 0)
-Background.Size = UDim2.new(0.726158023, 0, 0.952646255, 0)
+Background.Position = UDim2.new(0.500233352, 0, 0.501375079, 0)
+Background.Size = UDim2.new(0.983449578, 0, 0.976047158, 0)
 
 UICorner.Parent = Background
 
@@ -271,3 +282,9 @@ AF.BorderColor3 = Color3.fromRGB(0, 0, 0)
 AF.BorderSizePixel = 0
 AF.Position = UDim2.new(0.244258106, 0, 0.0648163259, 0)
 AF.Size = UDim2.new(0.746461391, 0, 0.909008682, 0)
+
+UICorner_2.Parent = Frame
+
+UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(0, 0, 0)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(170, 0, 255))}
+UIGradient.Rotation = 90
+UIGradient.Parent = Frame
